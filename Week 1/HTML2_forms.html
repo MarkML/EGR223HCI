@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HTML Forms Example</title>
+</head>
+<body>
+    <h1>HTML Forms Example</h1>
+    
+    <!-- 1. Introduce HTML forms using the <form> tag -->
+    <form action="submit.php" method="post">
+        <!-- Use the 'action' attribute to specify where the form data will be sent.
+             Use the 'method' attribute to specify how the data will be sent (GET or POST). -->
+        
+        <!-- 2. Text Field -->
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name">
+        <br>
+        <br> <!-- Add a break line -->
+
+        <!-- 3. Text Area -->
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="4" cols="50" placeholder="Enter your message"></textarea>
+        <br>
+        <br> <!-- Add a break line -->
+
+        <!-- 4. Radio Buttons -->
+        <label>Gender:</label>
+        <input type="radio" id="male" name="gender" value="male">
+        <label for="male">Male</label>
+        
+        <input type="radio" id="female" name="gender" value="female">
+        <label for="female">Female</label>
+        <br>
+        <br> <!-- Add a break line -->
+
+        <!-- 5. Checkboxes -->
+        <label>Hobbies:</label>
+        <input type="checkbox" id="reading" name="hobbies[]" value="reading">
+        <label for="reading">Reading</label>
+        
+        <input type="checkbox" id="painting" name="hobbies[]" value="painting">
+        <label for="painting">Painting</label>
+        <br> <!-- Add a break line -->
+        <br>
+        <!-- 6. Buttons -->
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+        <br> <!-- Add a break line -->
+    </form>
+</body>
+</html>
