@@ -1,0 +1,52 @@
+/* Reset some default styles for better presentation */
+body, h1, h2, p {
+    margin: 0;
+    padding: 0;
+}
+
+/* Apply styles to the grid container */
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* Two columns with 1:2 ratio */
+    grid-template-rows: auto auto 1fr auto; /* Four rows with auto sizing for header and footer */
+    grid-gap: 20px; /* Gap between grid items */
+    min-height: 100vh; /* Minimum height to fill the viewport */
+}
+
+/* Apply styles to grid items */
+header {
+    grid-column: 1 / span 2; /* Header spans both columns */
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+}
+
+nav {
+    background-color: #eee;
+    padding: 10px;
+}
+
+main {
+    background-color: #f8f8f8;
+    padding: 10px;
+}
+
+aside {
+    background-color: #eee;
+    padding: 10px;
+}
+
+footer {
+    grid-column: 1 / span 2; /* Footer spans both columns */
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+}
+
+/* Media query for responsive design */
+@media screen and (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr; /* Single column layout for small screens */
+        grid-template-rows: auto auto auto auto auto; /* Five rows with auto sizing */
+    }
+}
