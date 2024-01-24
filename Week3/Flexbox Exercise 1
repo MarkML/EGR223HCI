@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Flexbox Layout Experiment</title>
+    <style>
+        /* Apply flexbox to the container */
+        .container {
+            display: flex;
+            /* Add your flex-direction and justify-content values here */
+        }
+
+        /* Style your child elements as needed */
+        .item {
+            padding: 10px;
+            margin: 10px;
+            background-color: #f2f2f2;
+            border: 1px solid #777;
+            text-align: center;
+            flex: 1;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Create your HTML structure here -->
+    <div class="container">
+        <!-- Child elements go here -->
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+    </div>
+</body>
+</html>
