@@ -1,0 +1,61 @@
+/* Basic styling for the flex container */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #333;
+    padding: 20px;
+    height: 300px;
+}
+
+/* Styling for flex items */
+.item {
+    flex: 1 0 auto; /* Flex properties */
+    border: 2px solid #333; /* Border for all items */
+    padding: 20px; /* Padding for all items */
+    text-align: center; /* Center text */
+    color: white; /* Text color */
+    font-weight: bold; /* Bold text */
+}
+
+/* Unique background colors for each item */
+.item-1 {
+    background-color: #87ceeb; /* Light Blue */
+}
+
+.item-2 {
+    background-color: #98fb98; /* Pale Green */
+}
+
+.item-3 {
+    background-color: #ffb6c1; /* Light Pink */
+}
+
+.item-4 {
+    background-color: #ff8c00; /* Dark Orange */
+}
+
+.item-5 {
+    background-color: #dda0dd; /* Plum */
+}
+
+/* Changing the visual order of specific items */
+.item-1 {
+    order: 5; /* Moves this item to the end */
+}
+
+.item-2 {
+    order: 1; /* Moves this item to the beginning */
+}
+
+/* Experimenting with different flex properties */
+.item-3 {
+    flex-grow: 2; /* Grows twice as much as others */
+    flex-shrink: 1; /* Default shrinking behavior */
+    flex-basis: 200px; /* Initial size of 200px */
+}
+
+/* Aligning one item to the top */
+.item-4 {
+    align-self: flex-start;
+}
