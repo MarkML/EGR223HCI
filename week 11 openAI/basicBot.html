@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Chatbot</title>
+</head>
+<body>
+    <div id="chat-container">
+        <div id="chat-box"></div>
+        <input type="text" id="user-input" placeholder="Type your message...">
+        <button id="sendButton">Send</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/openai-gpt@0.0.3/dist/openai-gpt.min.js"></script>
+    <script>
+        const chatBox = document.getElementById("chat-box");
+        const userInput = document.getElementById("user-input");
+        const sendButton = document.getElementById("sendButton");
+
+        let userMessage = null;
+        const API_KEY = "enter-your-api-key-here";
+
+        const createChatLi = (message, className) => {
+            const chatLi = document.createElement("div");
+            chatLi.textContent = `${className}: ${message}`;
+            return chatLi;
+        };
+
+        const generateResponse = async () => {
+            const requestOptions = {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${API_KEY}`
+                },
+                body: JSON.stringify({
+                    model: "gpt-3.5-turbo",
+                    messages: [{role: "user", content: userMessage}],
+                })
+            };
+
+            try {
+                const response = await fetch("https://api.openai.com/v1/chat/completions", requestOptions);
+                const data = await response.json();
+                chatBox.appendChild(createChatLi(data.choices[0].message.content.trim(), "incoming"));
+                chatBox.scrollTo(0, chatBox.scrollHeight);
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        };
+
+        const handleChat = () => {
+            userMessage = userInput.value.trim();
+            if (!userMessage) return;
+
+            chatBox.appendChild(createChatLi(userMessage, "outgoing"));
+            userInput.value = "";
+
+            setTimeout(() => {
+                chatBox.appendChild(createChatLi("Thinking...", "incoming"));
+                chatBox.scrollTo(0, chatBox.scrollHeight); // Scroll to the bottom of the chat box
+                generateResponse();
+            }, 600);
+        };
+
+        sendButton.addEventListener("click", handleChat);
+        userInput.addEventListener("keydown", (e) => {
+            if (e.key === "Enter") {
+                handleChat();
+            }
+        });
+    </script>
+</body>
+</html>
