@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Chatbot</title>
+</head>
+<body>
+    <h1>Chat with our bot</h1>
+    <input type="text" id="userInput" placeholder="Say something...">
+    <button onclick="sendMessage()">Send</button>
+    <div id="chatHistory" style="margin-top: 20px;">
+        <!-- Chat messages will be appended here -->
+    </div>
+
+    <script>
+        async function sendMessage() {
+            const inputField = document.getElementById('userInput');
+            const userMessage = inputField.value;
+            const chatHistory = document.getElementById('chatHistory');
+
+            if (userMessage) {
+                // Append user's message to chat history
+                const userDiv = document.createElement('div');
+                userDiv.textContent = `You: ${userMessage}`;
+                chatHistory.appendChild(userDiv);
+
+                const response = await fetch('http://localhost:3000/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ message: userMessage }),
+                });
+
+                const data = await response.json();
+                // Append bot's response to chat history
+                const botDiv = document.createElement('div');
+                botDiv.textContent = `Bot: ${data.message}`;
+                chatHistory.appendChild(botDiv);
+
+                inputField.value = ''; // Clear the input field after sending the message
+            }
+        }
+    </script>
+</body>
+</html>
